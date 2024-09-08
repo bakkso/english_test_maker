@@ -1,16 +1,10 @@
-// Check if we're in production (Vercel) or development (localhost)
-// const apiUrl = process.env.NODE_ENV === 'production' 
-//   ? process.env.REACT_APP_API_URL  // Vercel 배포 환경
-//   : "http://localhost:4006/api/generate";  // 로컬 개발 환경
-
-const apiUrl = process.env.REACT_APP_API_URL
+// client/src/api.js
+const apiUrl = process.env.REACT_APP_API_URL || 'https://kaileyenglish.vercel.app/api/generate';
 
 export const generateQuestion = async (type, text) => {
-  if (!apiUrl) {
-    throw new Error("API URL is not defined. Please check your .env file.");
-  }
+  console.log("API URL:", apiUrl);
+  console.log("Request payload:", { type, text });
 
-  console.log("API URL:", apiUrl);  // URL 확인용 로그
   try {
     const response = await fetch(apiUrl, {
       method: 'POST',
@@ -21,17 +15,27 @@ export const generateQuestion = async (type, text) => {
     });
 
     console.log("Response status:", response.status);
+    console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+
+    const responseText = await response.text();
+    console.log("Response body:", responseText);
 
     if (!response.ok) {
-      throw new Error(`Network response was not ok: ${response.statusText}`);
+      throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
     }
 
-    const data = await response.json();
-    console.log(data);
+    let data;
+    try {
+      data = JSON.parse(responseText);
+    } catch (e) {
+      console.error("Failed to parse response as JSON:", e);
+      throw new Error("Invalid JSON response from server");
+    }
+
+    console.log("Parsed response data:", data);
     return data.question;
   } catch (error) {
     console.error('Fetch error:', error.message);
     throw error;
   }
 };
-

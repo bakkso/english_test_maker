@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import { generateQuestion } from './api';
 
 function App() {
   const [selectedType, setSelectedType] = useState('');
@@ -23,6 +22,23 @@ function App() {
     { kor: "내용구조화", eng: "Content Organization" }
   ];
 
+  const generateQuestion = async (type, text) => {
+    const response = await fetch('/api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type, text }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to generate question');
+    }
+
+    const data = await response.json();
+    return data.question;
+  };
+  
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
   };
