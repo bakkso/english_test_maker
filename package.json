@@ -1,0 +1,50 @@
+{
+  
+    "name": "english-question-generator",
+  
+    "version": "1.0.0",
+  
+    "scripts": {
+  
+      
+    "start": "node server/index.js",
+  
+      
+    "client": "cd client && PORT=4006 npm start",
+  
+      
+    "dev": "concurrently \"npm run start\" \"npm run client\""
+  
+    },
+  
+    "dependencies": {
+  
+      
+    "@anthropic-ai/sdk": "^0.24.3",
+  
+      
+    "axios": "^0.21.1",
+  
+      
+    "body-parser": "^1.19.0",
+  
+      
+    "cors": "^2.8.5",
+  
+      
+    "dotenv": "^16.4.5",
+  
+      
+    "express": "^4.17.1"
+  
+    },
+  
+    "devDependencies": {
+  
+      
+    "concurrently": "^6.0.0"
+  
+    },
+  
+    "proxy": "http://localhost:4006"
+}

@@ -1,0 +1,11 @@
+[{"type":"text","text":"Here's a vocabulary question based on the given text:\n\n
+[문제] Which of the following words is closest in meaning to \"unfamiliar\" as used in the passage?
+\n\nThe passage states: \"If this view is correct, we should have difficulty interpreting the emotions expressed in culturally unfamiliar music.\"
+\n\n① Foreign\n② Unusual\n③ Unknown\n④ Unpleasant\n⑤ Unpopular\n\n
+[정답] ③\n\n
+[해설] In this context, \"unfamiliar\" refers to music that is not known or recognized due to cultural differences. The word \"unknown\" (③) best captures this meaning. \n\n
+① Foreign: While close in meaning, it specifically refers to something from a different country, which is not necessarily the focus here.\n
+② Unusual: This means uncommon or rare, which doesn't fully capture the idea of being unknown due to cultural differences.\n
+④ Unpleasant: This has a negative connotation that is not implied by \"unfamiliar\" in this context.\n
+⑤ Unpopular: This means not liked by many people, which is different from being unknown or unfamiliar.\n\n
+[지문 해석]\n음악이 감정을 표현할 수 있는 한 가지 방법은 단순히 학습된 연관성을 통해서입니다. 아마도 단조의 음악이나 낮은 음으로 천천히 연주되는 음악에는 본질적으로 슬픈 것이 없을 수 있습니다. 우리가 특정 종류의 음악을 슬프다고 듣는 것은 단지 우리 문화에서 장례식과 같은 슬픈 사건들과 연관 짓는 것을 배웠기 때문일 수 있습니다. 이 견해가 맞다면, 우리는 문화적으로 익숙하지 않은 음악에서 표현된 감정을 해석하는 데 어려움을 겪어야 할 것입니다. 이 견해와 완전히 반대되는 입장은 음악과 감정 사이의 연결이 유사성에 있다는 것입니다. 예를 들어, 우리가 슬플 때 우리는 천천히 움직이고 천천히 말하며 낮은 음성으로 말합니다. 따라서 우리가 느리고 낮은 음악을 들을 때, 우리는 그것을 슬프다고 듣습니다. 이 견해가 맞다면, 우리는 문화적으로 익숙하지 않은 음악에서 표현된 감정을 이해하는 데 거의 어려움이 없어야 할 것입니다."}]
