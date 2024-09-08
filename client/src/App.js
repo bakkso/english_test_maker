@@ -23,22 +23,29 @@ function App() {
   ];
 
   const generateQuestion = async (type, text) => {
-    const response = await fetch('/api/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ type, text }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to generate question');
+    try {
+      const response = await fetch('https://kaileyenglish.vercel.app/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ type, text }),
+      });
+      
+      if (!response.ok) {
+        const errorBody = await response.text();
+        console.error('Server responded with an error:', response.status, errorBody);
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      return data.question;
+    } catch (error) {
+      console.error('Fetch error:', error);
+      throw error;
     }
-
-    const data = await response.json();
-    return data.question;
   };
-  
+
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
   };

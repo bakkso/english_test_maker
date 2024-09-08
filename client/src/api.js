@@ -39,3 +39,4 @@ export const generateQuestion = async (type, text) => {
     throw error;
   }
 };
+
