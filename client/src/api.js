@@ -1,7 +1,9 @@
 // Check if we're in production (Vercel) or development (localhost)
-const apiUrl = process.env.NODE_ENV === 'production' 
-  ? process.env.REACT_APP_API_URL  // Vercel 배포 환경
-  : "http://localhost:4006/api/generate";  // 로컬 개발 환경
+// const apiUrl = process.env.NODE_ENV === 'production' 
+//   ? process.env.REACT_APP_API_URL  // Vercel 배포 환경
+//   : "http://localhost:4006/api/generate";  // 로컬 개발 환경
+
+const apiUrl = process.env.REACT_APP_API_URL
 
 export const generateQuestion = async (type, text) => {
   if (!apiUrl) {
