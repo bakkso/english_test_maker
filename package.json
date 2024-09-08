@@ -2,8 +2,8 @@
     "name": "english-question-generator",
     "version": "1.0.0",
     "scripts": {
-      "client": "cd client && PORT=4006 npm start", // 클라이언트 실행
-      "dev": "concurrently \"npm run client\"" // 동시에 클라이언트 실행
+      "client": "cd client && PORT=4006 npm start",
+      "dev": "concurrently \"npm run client\"" 
     },
     "dependencies": {
       "@anthropic-ai/sdk": "^0.24.3",

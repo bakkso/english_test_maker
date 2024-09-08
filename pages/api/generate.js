@@ -1,6 +1,16 @@
 import { generateQuestion } from '../../server/generateQuestion';
 
 export default async function handler(req, res) {
+  // CORS 설정
+  res.setHeader('Access-Control-Allow-Origin', '*'); // 모든 도메인 허용
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS'); // 허용할 메서드
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // 허용할 헤더
+
+  // OPTIONS 메서드 요청 처리 (CORS 사전 요청)
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method === 'POST') {
     const { type, text } = req.body;
 
