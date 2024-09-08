@@ -1,5 +1,4 @@
-const { generateQuestion } = require('../../server/generateQuestion');
-require('dotenv').config();
+import { generateQuestion } from '../../server/generateQuestion';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -16,7 +15,7 @@ export default async function handler(req, res) {
       });
     }
   } else {
-    // POST 메서드 외에는 허용되지 않음
+    // POST 메서드 외에는 허용하지 않음
     res.setHeader('Allow', ['POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
