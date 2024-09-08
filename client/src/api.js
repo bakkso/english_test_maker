@@ -1,7 +1,8 @@
 // client/src/api.js
-const apiUrl = process.env.REACT_APP_API_URL || 'https://kaileyenglish.vercel.app/api/generate';
+// const apiUrl = process.env.REACT_APP_API_URL || 'https://kaileyenglish.vercel.app/api/generate';
 
 export const generateQuestion = async (type, text) => {
+  const apiUrl = process.env.REACT_APP_API_URL || 'https://kaileyenglish.vercel.app/api/generate';
   console.log("API URL:", apiUrl);
   console.log("Request payload:", { type, text });
 
@@ -39,4 +40,3 @@ export const generateQuestion = async (type, text) => {
     throw error;
   }
 };
-
