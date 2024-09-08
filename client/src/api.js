@@ -8,6 +8,7 @@ export const generateQuestion = async (type, text) => {
     throw new Error("API URL is not defined. Please check your .env file.");
   }
 
+  console.log("API URL:", apiUrl);  // URL을 확인하는 로그 추가
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -24,3 +25,4 @@ export const generateQuestion = async (type, text) => {
   console.log(data);
   return data.question;
 };
+
