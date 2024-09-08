@@ -10,21 +10,28 @@ export const generateQuestion = async (type, text) => {
     throw new Error("API URL is not defined. Please check your .env file.");
   }
 
-  console.log("API URL:", apiUrl);  // URL을 확인하는 로그 추가
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ type, text }),
-  });
+  console.log("API URL:", apiUrl);  // URL 확인용 로그
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type, text }),
+    });
 
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
+    console.log("Response status:", response.status);
+
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data.question;
+  } catch (error) {
+    console.error('Fetch error:', error.message);
+    throw error;
   }
-
-  const data = await response.json();
-  console.log(data);
-  return data.question;
 };
 
