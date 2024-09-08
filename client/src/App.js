@@ -22,7 +22,35 @@ function App() {
     { kor: "내용구조화", eng: "Content Organization" }
   ];
 
+  // const generateQuestion = async (type, text) => {
+  //   try {
+  //     const response = await fetch('/api/generate', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ type, text }),
+  //     });
+      
+  //     if (!response.ok) {
+  //       const errorBody = await response.text();
+  //       console.error('Server responded with an error:', response.status, errorBody);
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+      
+  //     const data = await response.json();
+  //     return data.question;
+  //   } catch (error) {
+  //     console.error('Fetch error:', error);
+  //     throw error;
+  //   }
+  // };
+
   const generateQuestion = async (type, text) => {
+    const timeout = 60000; // 60초
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+  
     try {
       const response = await fetch('/api/generate', {
         method: 'POST',
@@ -30,7 +58,10 @@ function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ type, text }),
+        signal: controller.signal
       });
+      
+      clearTimeout(id);
       
       if (!response.ok) {
         const errorBody = await response.text();
@@ -41,6 +72,10 @@ function App() {
       const data = await response.json();
       return data.question;
     } catch (error) {
+      if (error.name === 'AbortError') {
+        console.error('Request timed out');
+        throw new Error('Request timed out');
+      }
       console.error('Fetch error:', error);
       throw error;
     }
