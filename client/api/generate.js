@@ -89,7 +89,7 @@ export default async function handler(req, res) {
       ]
     });
     console.log('API Response:', message.content);
-    
+
     res.status(200).json({ question: message.content });
   } catch (error) {
     console.error('Error calling Claude API:', error);
