@@ -1,6 +1,7 @@
 {
     "name": "english-question-generator",
     "version": "1.0.0",
+    "type": "module",
     "scripts": {
       "client": "cd client && PORT=4006 npm start",
       "dev": "concurrently \"npm run client\"" 
