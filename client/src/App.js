@@ -28,6 +28,7 @@ function App() {
     const id = setTimeout(() => controller.abort(), timeout);
   
     try {
+      console.log('Sending request with:', {type, text});
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: {
@@ -46,6 +47,7 @@ function App() {
       }
       
       const data = await response.json();
+      console.log('Received data:', data);
       return data.question;
     } catch (error) {
       if (error.name === 'AbortError') {
