@@ -15,9 +15,18 @@ export default async function handler(req, res) {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
+  console.log('Raw body:', req.body);
+  let { type, text } = req.body;
 
-  const { type, text } = req.body;
+  if (typeof req.body === 'string') {
+    const parsedBody = JSON.parse(req.body);
+    type = parsedBody.type;
+    text = parsedBody.text;
+  }
 
+  console.log('Parsed type:', type);
+  console.log('Parsed text:', text);
+  
   if (!type || !text) {
     return res.status(400).json({ error: 'Missing required parameters' });
   }
