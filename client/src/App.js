@@ -81,9 +81,6 @@ function App() {
       
       // 디버깅 용 로그
       console.log('Generated Question:', question);
-      console.log('Type:', type);
-      console.log('Text:', text);
-      console.log('Prompt Question:', prompt_question);
   
       setGeneratedQuestion(question);
     } catch (error) {
