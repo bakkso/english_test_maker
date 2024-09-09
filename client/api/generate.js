@@ -71,7 +71,7 @@ export default async function handler(req, res) {
     prompt_question = "복잡한 글의 구조와 논리 전개 방식을 분석하는 능력 평가, 글의 전개 방식(비교/대조, 인과관계, 문제/해결 등)을 파악하는 능력 요구, 각 문단의 기능과 전체 글에서의 역할 이해 필요";
   }
 
-
+  console.log('test:', prompt_question);
 
   try {
     const message = await client.messages.create({
