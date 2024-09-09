@@ -22,30 +22,6 @@ function App() {
     { kor: "내용구조화", eng: "Content Organization" }
   ];
 
-  // const generateQuestion = async (type, text) => {
-  //   try {
-  //     const response = await fetch('/api/generate', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ type, text }),
-  //     });
-      
-  //     if (!response.ok) {
-  //       const errorBody = await response.text();
-  //       console.error('Server responded with an error:', response.status, errorBody);
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-      
-  //     const data = await response.json();
-  //     return data.question;
-  //   } catch (error) {
-  //     console.error('Fetch error:', error);
-  //     throw error;
-  //   }
-  // };
-
   const generateQuestion = async (type, text) => {
     const timeout = 60000; // 60초
     const controller = new AbortController();
@@ -94,15 +70,16 @@ function App() {
       alert('문제 유형과 텍스트를 모두 입력해주세요.');
       return;
     }
-
+  
     setIsLoading(true);
     try {
       const selectedTypeEng = problemTypes.find(type => type.kor === selectedType).eng;
+      console.log('Selected Type (English):', selectedTypeEng); // 디버깅용 로그
       const question = await generateQuestion(selectedTypeEng, text);
       
       // 디버깅 용 로그
       console.log('Generated Question:', question);
-
+  
       setGeneratedQuestion(question);
     } catch (error) {
       console.error('Error generating question:', error);
